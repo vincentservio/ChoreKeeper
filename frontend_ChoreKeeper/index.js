@@ -1,10 +1,7 @@
 const BASE_URL = 'http://localhost:3000'
 
 window.addEventListener('load', () => {
-getNames()
-
-
-
+    getNames()
 })
 
 const getNames = () => { 
@@ -14,15 +11,11 @@ const getNames = () => {
     fetch(BASE_URL+"/housemates")
     .then(resp => resp.json())
     .then(housemates => {
-        // allHousemates.sort((a,b) => (a.name > b.name) ? 1 : -1)
-housemates.sort((a,b) => (a.name > b.name) ? 1 : -1).forEach(housemate => {
-
+        housemates.sort((a,b) => (a.name > b.name) ? 1 : -1).forEach(housemate => {
             let hm = new Housemate(housemate)
             main.innerHTML += hm.renderNames()
             attachClickLinks()
-document.querySelectorAll("li a").forEach(name => name.addEventListener('click', displayChores))
-
-
+            document.querySelectorAll("li a").forEach(name => name.addEventListener('click', displayChores))
         })
     })
 }
@@ -58,7 +51,7 @@ const createName = () => {
         method: "POST",
         body: JSON.stringify(housemate),
         headers: {
-            "Content-Type": 'application/json',
+             "Content-Type": 'application/json',
             'Accept': 'application/json'
         }
     })
@@ -154,12 +147,14 @@ const updateName = () => {
 
 
 class Housemate {
+    static all = []
     constructor(housemate){
+
         this.id = housemate.id 
         this.name = housemate.name
         this.chores = housemate.chores
         Housemate.all.push(this)
-        allHousemates.push(this)
+     
     }
 
     renderNames() {

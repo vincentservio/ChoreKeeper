@@ -24,14 +24,12 @@ text-align:left;
 } */
 
 a:link {
- 
     font-size:18px;
     
-    color:pink;
+    color:rgb(255, 255, 255);
     text-align: left;
 
     font-family:sans-serif;
-    background-color:white;
     text-decoration:none;
 
 
@@ -59,4 +57,14 @@ th {
     font-weight: bold;
     text-transform: uppercase;
     
+}
+li{
+color: black;
+text-align: center;
+}
+
+html{
+background-image: url("https://image.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg")
+
+
 }

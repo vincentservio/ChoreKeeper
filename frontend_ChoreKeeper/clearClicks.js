@@ -23,8 +23,16 @@ const clearForm = () => {
 // <===================== CLEAR ULs ==============>
 const clearUls = () => {
     //table included
+  
     let main = document.querySelector('#main')
 
     main.innerHTML = ""
     document.querySelector("table").innerHTML = ""
 }
+
+// const clearTable = () => {
+//     debugger
+//     if (document.getElementById('tableData').innerHTML === ""
+//     )
+
+// }

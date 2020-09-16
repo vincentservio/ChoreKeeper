@@ -7,6 +7,7 @@
 function displayTable(){
     clearForm()
     clearUls()
+    
     let tab = document.querySelector("table")
     tab.innerHTML += `
     <table>
@@ -44,37 +45,45 @@ function displayTable(){
 // Create separate collum to load all the task under here 
 // follow example above/ check out the table header
 
+   
+
 
 loadTable()
-    // })
+   
 }
 
 
 function loadTable(){
     const tableBody = document.getElementById('tableData')
-    if (Housemate.all.length )
-    Housemate.all.forEach(mate => { 
-
-        let dataHtml = '';
-            dataHtml += 
-            `
-                <tr data-id=${mate.id} >
-                <td>${mate.name}</td> 
+    fetch(BASE_URL + '/housemates')
+    .then(res => res.json())
+    .then(housemates => {
+    housemates.forEach(mate => {
+     
+     
+        let dataHtml = ''; 
+          if (mate.chores.length === 0){
+              dataHtml = `
+            <tr data-id=${mate.id}>
+            <td>${mate.name}</td> 
+            <td>Get ${mate.name} a task!</td> 
+            <td>${mate.name}'s Lucky week</td> `
+        }
+        else 
+        dataHtml +=
+            `<tr data-id=${mate.id} >
+            <td>${mate.name}</td> 
+            <td>${mate.chores.slice(-1)[0].task}</td>
+            <td>${mate.chores.slice(-1)[0].day}</td>
                 </tr>
-            `  
-        tableBody.innerHTML += dataHtml    
-        const tableRow = document.querySelector(`tr[data-id="${mate.id}"]`)
+            `
+        tableBody.innerHTML += dataHtml
+    }) 
+   })
 
-        const chor = mate.chores.slice(-1)[0] 
-        let choreData = '';
-        choreData += 
-        `
-            <td>${chor.task}</td>
-            <td>${chor.day}</td>
-        `      
-        tableRow.innerHTML += choreData
-    })
-
-
+    
 
 }
+
+
+
