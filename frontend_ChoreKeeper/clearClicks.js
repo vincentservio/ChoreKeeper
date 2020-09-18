@@ -3,6 +3,7 @@ function attachClickLinks() {
 
     
     document.getElementById("tableBtn").addEventListener("click", displayTable)
+    document.getElementById("daytableBtn").addEventListener("click", getDays)
     document.getElementById("names").addEventListener("click", getNames)
     document.getElementById("nameForm").addEventListener("click", displayNameForm)
     document.querySelectorAll("#delete").forEach(name => name.addEventListener('click', removeName))

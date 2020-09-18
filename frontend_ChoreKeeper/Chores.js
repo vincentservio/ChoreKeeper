@@ -10,7 +10,16 @@ const displayChoreForm = () => {
             <form>
                 <input type="text" id="task" placeholder="Clean the Bathroom">
                 <br> 
-            <input type = "text" id="day" placeholder="Monday">
+                <select id="days">
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+                <select>
+          
             <input type="submit"> 
 
 
@@ -24,7 +33,8 @@ const displayChoreForm = () => {
     })
     
 }
-      function myFunction() {
+      function dayList() {
+
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
@@ -32,14 +42,14 @@ const displayChoreForm = () => {
         //ID CANNOT BE SET PLEASE CONTINUE TO CONFIGURE FROM HERE
 // housemate_id: document.querySelector(`li a`).dataset.id,
 // ^===============  CREATE CARD =======================
-function createChore(event, id){
+function createChore(event, id ){
   event.preventDefault()
 
     
     const chore = {
         housemate_id: id,
         task: document.getElementById("task").value,
-        day: document.getElementById("day").value
+        day: document.getElementById("days").value
     };
 
     fetch(BASE_URL+`/chores`, {
@@ -218,7 +228,7 @@ const updateChore = () => {
 // }
 
 class Chore {
-
+    static all = []
     constructor(chore) {
         this.id = chore.id
         this.task = chore.task
@@ -240,4 +250,4 @@ class Chore {
 }
 
     
-     Chore.all = []
+    
