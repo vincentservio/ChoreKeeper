@@ -1,5 +1,5 @@
 class ChoreSerializer < ActiveModel::Serializer
-  attributes :id, :task, :housemate_id, :day
+  attributes :id, :task, :day
   belongs_to :housemate
 end
 

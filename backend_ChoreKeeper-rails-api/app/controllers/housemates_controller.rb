@@ -3,9 +3,8 @@ class HousematesController < ApplicationController
 
   # GET /housemates
   def index
-    @housemates = Housemate.all
-
-    render json: @housemates
+    housemates = Housemate.all
+    render json: housemates
   end
 
   # GET /housemates/1
