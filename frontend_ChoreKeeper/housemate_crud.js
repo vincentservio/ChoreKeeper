@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://chorekeeper-api.herokuapp.com/";
 
 window.addEventListener("load", () => {
   getNames();
@@ -26,6 +26,7 @@ window.addEventListener("load", () => {
 const getNames = () => {
   clearUls();
   clearForm();
+  attachClickLinks();
 
   fetch(BASE_URL + "/housemates")
     .then((resp) => resp.json())
