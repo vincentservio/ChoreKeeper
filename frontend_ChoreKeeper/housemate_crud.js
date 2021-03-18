@@ -4,25 +4,6 @@ window.addEventListener("load", () => {
   getNames();
 });
 
-// const getNancys = () => {
-//   clearUls();
-//   clearForm();
-//   fetch(BASE_URL + "/housemates")
-//     .then((resp) => resp.json())
-//     .then((housemates) => {
-//       housemates
-//         .filter((mate) => mate.name[0] === "N")
-//         .forEach((housemate) => {
-//           let hm = new Housemate(housemate);
-//           main.innerHTML += hm.renderNames();
-//           attachClickLinks();
-//           document
-//             .querySelectorAll("li a")
-//             .forEach((name) => name.addEventListener("click", displayChores));
-//         });
-//     });
-// };
-
 const getNames = () => {
   clearUls();
   clearForm();
@@ -136,13 +117,14 @@ const updateName = () => {
     .then((housemate) => {
       document.querySelector(
         `li a[data-id="${id}"]`
-      ).parentElement.innerHTML = `
-            <a href="#" data-id="${housemate.id}">${housemate.name}</a>
-            <br>
-            <button id = "delete" data-id="${housemate.id}">Delete</button>
-            <button id = "edit" data-id="${housemate.id}"> Edit </button>
-            <button id="addChore" data-id="${housemate.id}">Add Chore</button>
-        `;
+      ).parentElement.innerHTML = new Housemate(housemate).renderNames();
+      // `
+      //       <a href="#" data-id="${housemate.id}">${housemate.name}</a>
+      //       <br>
+      //       <button id = "delete" data-id="${housemate.id}">Delete</button>
+      //       <button id = "edit" data-id="${housemate.id}"> Edit </button>
+      //       <button id="addChore" data-id="${housemate.id}">Add Chore</button>
+      //   `;
       attachClickLinks();
       clearForm();
     });
@@ -160,8 +142,8 @@ class Housemate {
   renderNames() {
     return `
             <li>
-                <a href="#" data-id="${this.id}" class="g">${this.name}</a>
-                </br>
+                <div id="housem" data-id="${this.id}" class="g">${this.name}</div>
+              
                 <button id = "delete" data-id="${this.id}">Delete</button>
                 <button id = "edit" data-id="${this.id}"> Edit </button>
                 <button id = "addChore" data-id="${this.id}"> Add Chore </button>
